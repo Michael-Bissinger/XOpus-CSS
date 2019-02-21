@@ -1,0 +1,727 @@
+@import "html_cals_table.css";
+
+@namespace oxy url('http://www.oxygenxml.com/extensions/author');
+
+*{
+	color: black;
+
+}
+einschub_vor,
+u-block1,
+u-block2,
+u-block3,
+u-block4,
+u-block5,
+u-block6,
+u-block7,
+u1,
+u2,
+u3,
+u4,
+u5,
+u6,
+u7,
+kapitel,
+inhaltsverz,
+abs,
+liste_geordnet,
+liste_ungeordnet,
+liste_manuell,
+liste_definition,
+index,
+index_aufruf,
+gedicht,
+leerzeile,
+abbildung,
+abb_aufruf,
+tabelle,
+tab_aufruf,
+u-zwischen,
+einschub,
+infokasten,
+leseprobe_start,
+leseprobe_ende,
+bildgruppe,
+szene,
+video,
+audio{
+	display: block;
+}
+hoch,
+tief,
+fett,
+kursiv,
+kapitaelchen,
+sperrung,
+unterstr,
+durchgestr,
+versal,
+verweisziel,
+abb_inline,
+initiale,
+inline,
+ziffer,
+fremd,
+reg_pers,
+reg_ort,
+reg_sach,
+register,
+fussnote,
+endnote,
+marginalie,
+tabulator_def,
+tabulator_ref,
+tabulator_rechts,
+br,
+verweis,
+regie_inline,
+abb_aufruf,
+tab_aufruf,
+spitzmarke,
+einschub_aufruf,
+infokasten_aufruf{
+	display: block;
+}
+oxy|comment,
+meta{
+	display: none !important;
+}
+
+/*
+     Grundlegende Formatierungen
+*/
+
+abs{
+	color: #000;
+	margin: 1em 0;
+	font-size:1em;
+}
+
+kursiv, fett, durchgestr, unterstr, kapitaelchen, tief, hoch, sperrung {
+	color:black;
+	display:inline;
+}
+
+unterstr {
+	text-decoration:underline;
+}
+
+kapitaelchen { 
+	/*font-variant:small-caps; Anscheinend unterstützt Oxygen diesen Befehl nicht. Ist meines Wissens nach auch ein CSS3-Befehl */
+	text-transform:uppercase; /* Zwar keine richtigen Kapitälchen, aber immerhin Großbuchstaben */
+	font-size: 70%;
+}
+
+spitzmarke {
+	display:inline;
+	color:black;
+	font-style:italic;
+}
+
+marginalie {
+	display:inline;
+	color:black;
+	font-style:italic;
+	text-decoration:overline underline;
+}
+
+fremd {
+	display:inline;
+	color:black;
+	font-style:italic;
+}
+
+kursiv {
+	font-style:italic;
+}
+
+fett {
+	font-weight:bold;
+}
+
+durchgestr {
+	text-decoration:line-through;
+}
+
+br:after {
+	content: "\A";
+	white-space: pre;
+}
+
+oxy|entity[name^='#']{ /* Entity oben im Text einfärben */
+    -oxy-display-tags: none;
+}
+
+?gvh ziffer? { /*klappt noch nicht.*/
+	color:yellow;
+	display:none;
+}
+
+
+sperrung {
+	letter-spacing: 0.5em;
+}
+
+hoch {
+	vertical-align: super;
+}
+
+tief {
+	vertical-align: sub;
+}
+
+/* 
+    Inhaltsverzeichnis
+*/
+
+/*inh-eintrag {
+    display: block;
+}*/
+
+inhalt {
+	display: table;
+	table-layout:auto;
+}
+
+ie-sz {
+	display:inline;
+	text-align:right;
+}
+
+ie-text, ie-sz {color:black;}
+/*
+ie-sz ziffer {
+	content:"  Seite ";
+	display:inline;
+	float:left;
+}
+*/
+
+verweis {
+	font-style:italic;
+	color:black;
+	display:inline;
+}
+
+ziffer, versal {
+	display:inline;
+	color:black;
+}
+
+initiale {
+	display:inline;
+	color:black;
+	font-size:1.8em;
+}
+
+abb, abb_inline {
+	font-size:3em;
+	font-weight:100;
+	color:#bdbdbd;
+}
+
+sprungziel {
+	font-size:3em;
+	font-weight:100;
+	color:#bdbdbd;
+}
+
+inline[typ="1"] {
+	display:inline;
+	color:black;
+	font-style:italic;
+}
+
+inline { /* Nur provisorisch. Die Deklaration oben funktioniert ansonsten.*/
+	display:inline;
+	color:black;
+	font-style:italic;
+}
+
+projekt{
+	display: block;
+}
+
+werk.before {
+	background-color:black;
+}
+
+projekt {
+	background-color:#bdbdbd;
+}
+
+werk{
+	font-family: "Times New Roman", Georgia, Serif;
+	padding: 1em;
+	display: block;
+	margin:  0 0em;
+	margin-right:10em;
+	margin-left:10em;
+	border-left: 0.05em solid;
+	border-right: 0.05em solid;
+	border-color: black;
+	background-color:white;
+}
+
+titelei_abs{
+	color: #000;
+	font-family: arial, helvetica, sans-serif;
+	display: block;
+	font-weight:100;
+}
+
+leerzeile{
+	content: " ¶";
+	white-space: normal;
+	color:black;
+}
+
+titelei_abs titel { /*hier bitte weiterarbeiten. soll natürlich nicht rot werden*/
+	color: red;
+}
+
+einschub_aufruf {
+	display:inline;
+	color:black;
+	background-color:#dddddd;
+}
+
+infokasten {
+	display:inline;
+	color:black;
+	background-color:#f5f5f5;
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+}
+
+infokasten_aufruf {
+	display:inline;
+	color:black;
+	background-color:#dddddd;
+}
+
+verweisziel {
+	display:block;
+	background-color:#dddddd;
+	color:black;
+	text-decoration:none;
+	letter-spacing:0em;
+}
+
+/* 
+Überschriften
+*/
+
+u-block1 {
+	margin-bottom:0em;
+	margin-top:4em;
+}
+
+
+u1 u-text {
+	color:black;
+	font-size:2em; /* größte mögliche Überschrift */
+	font-weight:bold;
+	margin-top:1em;
+}
+
+u1 u-zaehler {
+	font-weight:bold;
+	font-size:2em;
+	color:black;
+}
+
+
+u-block2 {
+	margin-bottom:0em;
+	margin-top:2.5em;
+}
+
+u2 u-zaehler {
+	font-weight:bold;
+	font-size:1.5em;
+	color:black;
+}
+
+u2 u-text {
+	font-weight:bold;
+	color:black;
+	font-size:1.5em;
+	margin-top:1em;
+}
+
+
+u3 u-zaehler {
+	font-weight:bold;
+	font-size:1.0em;
+	color:black;
+}
+
+
+u3 u-text {
+	font-weight:bold;
+	color:black;
+	font-size:1.0em;
+	margin-top:1em;
+}
+
+
+u4 u-text {
+	color:black;
+	text-decoration:underline;
+}
+
+u4 u-zaehler {
+	color:black;
+	text-decoration:underline;
+}
+
+
+u5 u-text {
+	color:black;
+	font-style: italic;
+}
+
+u5 u-zaehler {
+	color:black;
+	font-style: italic;
+}
+
+
+u6 u-text {
+	content:"–  ";
+	color:black;
+}
+
+u6 u-zaehler {
+	color:black;
+}
+
+
+u7 u-text {
+	color:black;
+}
+
+u7 u-zaehler {
+	color:black;
+}
+
+
+u-vor {
+   font-style:italic;
+   color:black;
+   font-size:0.8em;
+}
+
+u-zaehler::after {
+	content: " ";
+}
+
+untertitel {
+	color:black;
+	font-size:0.6em;
+	margin-top:0.5em;
+	font-style:italic;
+	content: "» ";	
+}
+
+u-zwischen u-text {
+	color:black;
+	font-weight:bold;
+	height:10em;
+	font-size:1.0em;
+	margin-top:8em;
+	padding-top: 1.2em;
+}
+
+/*
+    Tabellen
+*/
+
+tabellentitel {
+	font-weight:bold;
+}
+
+tabellentitel zaehler {
+	color:black;
+	font-weight:bold;
+}
+
+tabelle legende {
+	font-size:0.7em;
+	text-indent:2.5em;
+}
+
+tab_aufruf {
+	display:none;
+}
+
+/* 
+    Listen
+*/
+
+le-zaehler {
+	color:black;
+	font-size: 2em;
+	font-weight:bold;
+}
+
+
+le-eintrag {
+	display:list-item; /* Hier entsteht der Kreis: • */
+	text-indent:2.5em; /* Dieser Wert legt den Standartwert für text-indent einer Liste fest */
+	color:black;
+}
+
+td liste_geordnet le-eintrag abs {
+	text-indent: 2.5em !important;
+	/*content: "• " !important;*/
+	color:black;
+}
+
+
+le-begriff { /*textindent funktioniert noch nicht!!!*/
+	text-indent: 2.5em;
+	font-weight:bold;
+	color:black;
+}
+
+le-eintrag abs {
+		/*content: "• "   !important;*/
+	color:black;
+}
+
+seite {
+	font-weight:bold;
+	color:black;
+	content: "‹Seite " attr(nr) "›";
+	display:block;
+}
+
+/* 
+    Fußnote
+*/
+
+fussnote {
+	color:black;
+	margin-left:4em;
+	margin-bottom:5em;
+	
+	/*text-indent:4em;*/
+	font-style:italic;
+	font-size:0.8em;
+}
+
+fussnote:before{
+	width:30%;
+	line-height: 0.3em;
+	display:block;
+	border-top:1px solid black;
+	margin-top:2em;
+	background:#dddddd;
+	content: ""
+}
+
+fn-abs {
+	color:black;
+}
+
+/* 
+    Theaterstück
+*/
+
+akt {
+	/*font-family: courier, fixed, monospace;*/
+	font-family:inherit;
+}
+
+regie, sprechertext {
+	color:black;
+	text-indent:0em;
+}
+
+/*sprecher versal {
+	display: block;
+	text-indent:0em;	
+}*/
+
+akt versal {
+	text-decoration:underline;
+}
+
+sprecher { /* aus irgendeinem Grund wird der Text hier eingerückt. Das sollte aber nicht sein oder es sollte alles und nicht nur die erste Zeile eingerückt werden. Lösung: Die XML-Datei ist fehlerhaft. Die Einrückung entsteht durch Weißraum.*/
+	color: black;
+	text-indent: 0em;
+	display: block;
+}
+
+regie_inline {
+	font-style:italic;
+	display: inline;
+	color: black;
+	content: "<"
+}
+
+regie_inline::after {
+	content: ">";
+}
+
+/*
+ * Gedicht
+ * 
+ */
+ 
+ gedicht {
+	color: #000;
+	margin: 1em 0;
+	font-size:1em;
+ }
+ 
+ gedicht vers {
+    display:block;
+ 	color:black;
+ }
+ 
+ strophe {
+ 	color: #000;
+	margin: 1em 0;
+	font-size:1em;
+ }
+ 
+ /*
+  * Legende
+  */
+
+ legende abs {
+ 	content: "⇑ ";
+ 	text-indent: 1em;
+ 	color:black;
+ }
+ 
+ legende zaehler {
+ 	color:black;
+ }
+ 
+ /*
+  * Register
+  */
+
+reg_ort, reg_sach, reg_pers, register {
+	text-align:left;
+	font-size:0.8em;
+	text-indent: 4em;
+} 
+ 
+reg-fundstelle {
+	font-style:italic;
+	color:black;
+	content:"→ ";
+	display:block;
+}
+
+reg-begriff1 {
+	color:black;
+	font-style:italic;
+	display:block;
+}
+
+reg-begriff2 {
+	color:black;
+	font-style:italic;
+	display:block;
+	text-indent:6em;
+	content: "» ";
+}
+
+reg-begriff3 {
+	color:black;
+	font-style:italic;
+	display:block;
+	text-indent:9em;
+	content: "»» ";
+}
+
+reg-querverweis {
+	display: block;
+	color:black;
+}
+
+
+/*
+ * Index
+ */
+
+ix-text {
+	color:black;
+	display:list-item;
+	text-indent: 2em;
+	list-style-type:square;
+}
+
+/*
+ * Verweis
+ */
+
+ix-referenz {
+	color:black;
+	font-style:italic;
+	text-indent: 2em;
+	display:block;
+}
+
+ix-verweis {
+	color:inherit;
+	font-style:inherit;
+}
+
+/*
+ * Leseprobe
+ */
+
+leseprobe_start {
+	font-weight:bold;
+	text-indent:0em;
+	color:black;
+	content: "‹Leseprobe " attr(format) "›";
+	display:block;
+}
+
+leseprobe_ende {
+	font-weight:bold;
+	color:black;
+	content: "‹Ende der Leseprobe " attr(format) "›";
+	display:block;
+}
+
+abb_aufruf {
+	display:none;
+}
+
+index_aufruf {
+	display:none;
+}
+
+
+/*
+ * Tabulatoren
+ */
+
+
+tabulator_def {
+	display: inline;
+	content: "----->";
+	color: 	#dddddd;
+}
+
+tabulator_ref {
+	display: inline;
+	content: "----->";
+	color: 	#dddddd;
+}
+
+tabulator_rechts {
+	display: inline;
+	content: "----->";
+	color: 	#dddddd;
+}
